@@ -32,5 +32,5 @@ def part2(file):
     input.close()
     return horiz * depth
 
-print(part1("AdventOfCode/day2.txt"))
-print(part2("AdventOfCode/day2.txt"))
+print(part1("AdventOfCode/day2.txt")) #Change file location to where your file is stored
+print(part2("AdventOfCode/day2.txt")) #Change file location to where your file is stored
