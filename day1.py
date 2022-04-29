@@ -10,7 +10,7 @@ def part1(fileName):
     file.close()
     return increased
 
-print(part1("AdventOfCode/day1.txt"))
+print(part1("AdventOfCode/day1.txt")) #Change file location to where your file is stored
 
 def part2(fileName):
     file = open(fileName,"r")
@@ -28,4 +28,4 @@ def part2(fileName):
     file.close()
     return increased
 
-#print(part2("day1.txt"))
+print(part2("AdventOfCode/day1.txt")) #Change file location to where your file is stored
