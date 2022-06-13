@@ -11,6 +11,3 @@ class Fish:
         else:
             self.age = 6
             return True
-
-    def fastSim(self):
-        self.age = (self.age - 6) % 7
