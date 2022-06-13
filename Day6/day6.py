@@ -1,6 +1,7 @@
 from Fish import Fish
+from collections import Counter
 
-
+# Works for small number of days. (Would work for large numbers, will just take an age...)
 def day6(filePath, days):
     with open(filePath) as fileInp:
         inputList = fileInp.read().split(",")
@@ -16,30 +17,20 @@ def day6(filePath, days):
         fishList += temp
     return len(fishList)
 
-"""Testing only - Please ignore
-def part2(filePath):  # Doesn't work
-    # in while loop, take 6 each time. Generate more fish by the amount of fish at level <6 before then increase incrementer by 6. Or 12, 18 etc.
+
+# Works for both parts (And is quicker)
+def part2(filePath, days):
     with open(filePath) as fileInp:
         inputList = fileInp.read().split(",")
-    fishList = []
-    for fishAge in inputList:
-        fishList.append(Fish(int(fishAge)))
-    i = 0
-    while i < 80:
-        total = 0
-        for fish in fishList:
-            if fish.age < 6:
-                fish.fastSim()
-                total += 1
-            else:
-                fish.fastSim()
-        fishList += [Fish(8) for _ in range(total)]
-        i += 6
-    return len(fishList)
-"""
+    fishAges = Counter({'0': 0, '1': 0, '2': 0, '3': 0,
+                       '4': 0, '5': 0, '6': 0, '7': 0, '8': 0})
+    fishAges.update(inputList)
+    for day in range(days):
+        fishAges = Counter({'0': fishAges['1'], '1': fishAges['2'],
+                            '2': fishAges['3'], '3': fishAges['4'], '4': fishAges['5'], '5': fishAges['6'], '6': (fishAges['0'] + fishAges['7']), '7': fishAges['8'], '8': fishAges['0']})
+    return sum(fishAges.values())
 
+#Enter file path in ""
+print(day6("", 80))
+print(part2("", 256))
 
-# test()
-#print(part2("AdventOfCode/Day 6/day6.txt"))
-print(day6("AdventOfCode/Day 6/day6.txt", 80))
-# print(day6("AdventOfCode/Day 6/day6.txt", 256)) Don't run this
